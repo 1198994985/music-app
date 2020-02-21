@@ -1,0 +1,18 @@
+@import "@/asserts/globalStyle";
+.list-title-wrap {
+  display: flex;
+  margin: 0 $screen-padding 0.25rem;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+
+  .list-title {
+    font-size: $font-size_18 * 1.9;
+    color: $font-color_1;
+    font-weight: $font-weight_1;
+  }
+}
+.list-title-title-small {
+  margin: 0 $screen-padding 0.16rem;
+  font-size: $font-size_24;
+  color: $font-color_4;
+}

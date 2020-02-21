@@ -1,0 +1,20 @@
+@import "@/asserts/globalStyle";
+.row-slider-wrap {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  margin-left: $screen-padding;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.row-slider-item {
+  position: relative;
+  box-sizing: border-box;
+  padding-right: 0.15rem;
+  // background-clip: content-box;
+  // background-color: rgba(221, 75, 31, 0.37);
+}

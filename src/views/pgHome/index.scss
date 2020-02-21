@@ -1,0 +1,53 @@
+@import "../../asserts/globalStyle";
+$height: 0.8rem;
+$width: 1rem;
+.home-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.15rem 0;
+  .slider-button {
+    width: $width;
+    height: $height;
+  }
+  .search,
+  .slider-button {
+    @include flexRowCenter;
+    .iconfont {
+      font-size: 0.5rem;
+    }
+  }
+  .search {
+    width: $width;
+    height: $height;
+  }
+  .tab-bars {
+    display: flex;
+    height: $height;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    a {
+      color: $font-color_3;
+      font-size: $font-size_16 * 2;
+      display: block;
+      transition: font-size 0.04s linear;
+      &.selected {
+        font-size: $font-size_18 * 2;
+        color: $font-color_1;
+        font-weight: $font-weight_1;
+        // 底部对齐
+        padding-bottom: 0.01rem;
+      }
+    }
+  }
+}
+
+.home-warp {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+}

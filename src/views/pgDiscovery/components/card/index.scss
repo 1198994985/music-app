@@ -1,0 +1,56 @@
+@import "@/asserts/globalStyle";
+@mixin Ellipsis {
+  position: relative;
+  overflow: hidden;
+
+  line-height: 1.5;
+  &::before {
+    content: "...";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    width: 1.2em;
+    padding-left: 0.01rem;
+    box-sizing: border-box;
+    background-color: white;
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
+}
+.card-img-wrapper {
+  position: relative;
+  img {
+    width: 100%;
+    border-radius: $border-radius_normal;
+  }
+}
+
+.card-wrapper {
+  position: relative;
+  overflow: hidden;
+  // border-radius: $border-radius_normal;
+}
+
+.card-meta-title {
+  font-size: $font-size_14 * 1.7;
+  margin: 0.05rem 0 0.1rem;
+  color: $font-color_2;
+}
+.card-meta-title-Ellipsis {
+   max-height: $font-size_14 * 5.1;
+  @include Ellipsis;
+}
+.card-meta-desc {
+  font-size: $font-size_14 * 1.4;
+  color: $font-color_3;
+  max-height: $font-size_14 * 4.2;
+  @include Ellipsis;
+}

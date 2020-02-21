@@ -1,0 +1,29 @@
+@import "@/asserts/globalStyle";
+$navItemSize: $icon-size_big;
+
+.nav-wrapper {
+  @include flexRowCenter(space-between);
+  margin: $screen-padding;
+  .nav-item-wrapper {
+    @include flexColumnCenter;
+    .nav-icon-wrapper {
+      @include flexRowCenter();
+      width: $navItemSize * 2;
+      height: $navItemSize * 2;
+      margin-bottom:0.15rem;
+      background: linear-gradient(
+        to right,
+        rgba(255, 1, 1, 0.404),
+        $theme-color
+      );
+      border-radius: $navItemSize * 2;
+      .nav-item {
+        font-size: $navItemSize;
+        color: white;
+      }
+    }
+    span{
+      font-size:$font-size_22;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@import "@/asserts/globalStyle";
+.swiper-pagination-bullet {
+  width: 0.1rem;
+  height: 0.1rem;
+}
+.swiper-pagination-bullet-active {
+  background: $theme-color;
+  opacity: 1;
+}
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 0.1rem;
+}
+.banner-wrapper {
+  position: relative;
+  width:100%;
+  margin: auto;
+   .slider-container {
+  position: relative;
+    overflow: hidden;
+   }
+  .slide-wrapper {
+    margin: 0 $screen-padding;
+    img {
+      border-radius: 0.1rem;
+    }
+  }
+}

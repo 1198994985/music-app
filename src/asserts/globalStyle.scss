@@ -1,0 +1,62 @@
+$theme-color: #ff2007;
+$theme-color-shadow: #ff5d47;
+$font-color_1: #323031;
+$font-color_2: #494949;
+$font-color_3: #a5a4a4;
+$font-color_4: #bbb9b9;
+
+$font-size_12: 0.12rem;
+$font-size_14: 0.14rem;
+$font-size_16: 0.16rem;
+$font-size_18: 0.18rem;
+$font-size_20: 0.20rem;
+$font-size_22: 0.22rem;
+$font-size_24: 0.24rem;
+$font-size_26: 0.26rem;
+
+$font-size_36: 0.36rem;
+
+$font-weight_1:800;
+
+$border-color: #e4e4e4;
+$background-color: #f2f3f4;
+$background-color-shadow: rgba(0, 0, 0, 0.3);
+$highlight-background-color: #fff;
+
+$border-radius_normal:0.1rem;
+
+$icon-size_big:0.5rem;
+$screen-padding:0.27rem;
+
+// 单行文本截断
+@mixin SingleLineEllipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 扩大可点击区域
+@mixin extendClick {
+  　position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}
+@mixin flexRowCenter($justifyContent:center) {
+  display: flex;
+  justify-content: $justifyContent;
+  align-items: center;
+}
+@mixin flexColumnCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+

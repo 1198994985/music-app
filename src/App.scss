@@ -1,0 +1,37 @@
+/* 大于750px，设置最大字体大小，防止宽度过大导致字体畸变 */
+@media screen and (min-width: 750px) {
+  #root {
+    overflow: hidden;
+    width: 750px;
+    margin: 0 auto !important;
+    /* 根节点设置默认字体大小 */
+    font-size: 16px;
+  }
+  html {
+    font-size: 100px !important;
+  }
+}
+
+/* 小于750px情况用vw自适应 */
+@media screen and (max-width: 750px) {
+  #root {
+    width: 100%;
+    background: #fff;
+    font-size: 2.133333333333vw;
+  }
+  html {
+    font-size: 13.33333333333333vw !important;
+  }
+}
+body,
+html {
+  height: 100%;
+}
+
+#root {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
