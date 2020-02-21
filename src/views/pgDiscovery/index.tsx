@@ -25,32 +25,32 @@ const PageDiscovery: React.FC = () => {
     <>
       <Banner />
       <Nav />
-      <Tittle />
+      <Tittle desc="每日推荐" title="这是一个title" />
       <RowSlider nums={3}>
         {[1, 2, 3, 4, 6, 7].map((i, index) => {
           return (
             <Card width={"100"} key={index} imageUrl={tempUrl}>
-              <Meta title="冯博是一个特别帅的热嗯啊实打实大苏打实打实大苏打" />
+              <Meta title="这是一个标题" />
             </Card>
           );
         })}
       </RowSlider>
-      <Tittle />
+      <Tittle desc="每日推荐" title="这是一个title" />
       <RowSlider nums={3}>
         {[1, 2, 3, 4, 6, 7].map((i, index) => {
           return (
             <Card width={"100"} key={index} imageUrl={tempUrl}>
-              <Meta title="冯博是一个特别帅的热嗯啊实打实大苏打实打实大苏打" />
+              <Meta title="这是一个标题" />
             </Card>
           );
         })}
       </RowSlider>
-      <Tittle />
+      <Tittle desc="每日推荐" title="这是一个title" />
       <RowSlider nums={3}>
         {[1, 2, 3, 4, 6, 7].map((i, index) => {
           return (
             <Card width={"100"} key={index} imageUrl={tempUrl}>
-              <Meta title="冯博是一个特别帅的热嗯啊实打实大苏打实打实大苏打" />
+              <Meta title="这是一个标题" />
             </Card>
           );
         })}
@@ -59,15 +59,11 @@ const PageDiscovery: React.FC = () => {
         <img alt="" data-src={tempUrl} width="100%" height="400px" />
         <img alt="" data-src={tempUrl} width="100%" height="400px" />
         <img alt="" data-src={tempUrl} width="100%" height="400px" />
-
-        <img alt="" data-src={tempUrl} width="100%" height="400px" />
-
-        <img alt="" data-src={tempUrl} width="100%" height="400px" />
-
         <img alt="" data-src={tempUrl} width="100%" height="400px" />
         <img alt="" data-src={tempUrl} width="100%" height="400px" />
         <img alt="" data-src={tempUrl} width="100%" height="400px" />
-
+        <img alt="" data-src={tempUrl} width="100%" height="400px" />
+        <img alt="" data-src={tempUrl} width="100%" height="400px" />
         <img alt="" data-src={tempUrl} width="100%" height="400px" />
       </div>
       <Loading size="big" />

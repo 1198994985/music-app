@@ -1,0 +1,64 @@
+@import "@/asserts/globalStyle";
+.songlist-wrapper {
+  @include fullScreen;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  .sub-header {
+    color: white;
+    .sub-header-title {
+      color: white;
+    }
+  }
+  .song-list-content {
+    position: relative;
+    width: 100%;
+    padding: 0.04rem 0 0 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .song-list-desc {
+      box-sizing: border-box;
+      height: 5rem;
+      width: 100%;
+    position: relative;
+
+      .bacground {
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        filter: blur(20px);
+        background: url(http://p2.music.126.net/N2HO5xfYEqyQ8q6oxCw8IQ==/18713687906568048.jpg);
+        background-size: 100% 100%;
+        background-position: 0px 0px;
+        background-origin: padding-box;
+        .filter {
+          background: rgba(7, 17, 27, 0.2);
+        }
+      }
+      .song-desc-center {
+        padding: 1.3rem $screen-padding 0;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        .song-detail {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          flex: 1;
+          padding: 0 0.15rem;
+          .list-title {
+            font-size: $font-size_26 * 1.4;
+            font-weight:605;
+            line-height: 1.5;
+            color: white;
+          }
+        }
+      }
+    }
+    .song-list {
+    }
+  }
+}

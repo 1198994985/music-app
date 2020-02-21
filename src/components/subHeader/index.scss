@@ -1,13 +1,10 @@
 @import "@/asserts/globalStyle";
 $height: 0.8rem;
 $width: 1rem;
-.ranklist-wrapper {
-  @include fullScreen;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-  .sub-header {
+ .sub-header {
+   z-index:100;
+    position: fixed;
+    top:0;
     box-sizing: border-box;
     padding: 0.15rem 0;
     height: 1.1rem;
@@ -20,6 +17,7 @@ $width: 1rem;
       width: $width;
       height: $height;
       margin-top: -0.1rem;
+      font-weight: $font-weight_1;
       .iconfont {
         font-size: 0.4rem;
       }
@@ -30,22 +28,3 @@ $width: 1rem;
       font-weight: $font-weight_1;
     }
   }
-  .ranklist-content {
-    position: relative;
-    overflow-y: auto;
-    overflow-x: hidden;
-    width: 100%;
-    flex: 1;
-    margin-top: 1.1rem;
-    .ranklist-box {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      margin: 0 $screen-padding;
-      .ranklist-item {
-        flex: 0 1 30%;
-        margin-right: 3%;
-      }
-    }
-  }
-}
