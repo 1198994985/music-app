@@ -1,6 +1,6 @@
 import React from "react";
 import { renderRoutes, RouteConfig } from "react-router-config";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./index.scss";
 let tabBars: Array<any> = [
   {
@@ -45,17 +45,6 @@ const Home: React.FC<IPHome> = function({ route }) {
         </div>
       </header>
       <article className="home-warp">
-        {/* {Array.from({ length: 5 }, iten => {
-          return (
-            <div
-              style={{
-                height: 200,
-                backgroundColor: "rgba(0, 0, 0, 0.2)",
-                marginBottom: 10
-              }}
-            ></div>
-          );
-        })} */}
         {renderRoutes(route.routes)}
       </article>
     </>

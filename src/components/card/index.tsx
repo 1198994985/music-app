@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useEffect, useState } from "react";
+import React, { useMemo} from "react";
 import "./index.scss";
 export interface IPMeta {
   title?: string;
@@ -31,19 +31,16 @@ export interface IPCard {
   width?: string;
   children?: React.ReactNode | string;
   imageUrl?: string;
+  onClick?: React.MouseEventHandler;
+  playNums?: string | number;
 }
-const mock2 = [
-  {
-    imageUrl:
-      "https://p2.music.126.net/7OiIpH11Ze8yni2oGMYnpA==/109951164653671933.jpg",
-    desc: "冯博太帅了"
-  }
-];
+
 const Card: React.FC<IPCard> = function({
   children,
   imageUrl = "",
-  cardData = mock2,
-  width = "100"
+  width = "100",
+  onClick,
+  playNums
 }) {
   const style = useMemo(() => {
     return {
@@ -53,8 +50,9 @@ const Card: React.FC<IPCard> = function({
   return (
     <>
       <div className="card-wrapper" style={style}>
+        <div className="play-nums"> {playNums && ("▷"+playNums) }</div>
         <div className="card-img-wrapper">
-          <img alt="" src={imageUrl} />
+          <img alt="" src={imageUrl} onClick={onClick} />
         </div>
         {children}
       </div>

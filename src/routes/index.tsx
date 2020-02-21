@@ -4,15 +4,16 @@ import { RouteConfig } from "react-router-config";
 import {Loading} from "@/components"
 const lazyComponet = (Component: React.ElementType) => (props: any) => {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={null}>
       <Component {...props}></Component>
     </Suspense>
   );
 };
 
 const HomeComponent = lazy(() => import("../views/pgHome"));
-const LoadingComponent = lazy(() => import("@/views/pgDiscovery"));
+const DiscoveryComponent = lazy(() => import("@/views/pgDiscovery"));
 const BannerComponent = lazy(() => import("@/components/banner"));
+const RankListComponent = lazy(() => import("../views/pgRank"));
 
 const routeConfigs: RouteConfig[] = [
   { path: "/", exact: true, render: () => <Redirect to={"/home"} /> },
@@ -25,7 +26,6 @@ const routeConfigs: RouteConfig[] = [
         exact: true,
         render: () => <Redirect to={"/home/discovery"} />
       },
-
       {
         path: "/home/cloud",
         exact: true,
@@ -35,7 +35,7 @@ const routeConfigs: RouteConfig[] = [
       },
       {
         path: "/home/discovery",
-        component: lazyComponet(LoadingComponent)
+        component: lazyComponet(DiscoveryComponent)
       },
       {
         exact: true,
@@ -45,9 +45,7 @@ const routeConfigs: RouteConfig[] = [
       {
         exact: true,
         path: "/home/my",
-        render: () => {
-          return <div className="bobo">my</div>;
-        }
+        component: lazyComponet(RankListComponent)
       }
     ]
   },

@@ -1,4 +1,5 @@
 import Loading from "./loading"
 import Banner from "./banner";
-
-export { Loading, Banner };
+import Card, { Meta } from "./card"
+import Tittle from "./listTitle";
+export { Loading, Banner, Card, Meta, Tittle };

@@ -10,15 +10,21 @@ import "./index.scss";
 export interface IPRowSlider {
   nums?: number; // 宽度100%，显示的item数量
   children?: React.ReactNode | string;
-}
-const Tittle: React.FC<IPRowSlider> = function() {
+  title?: string;
+  desc?:string
 
+}
+const Tittle: React.FC<IPRowSlider> = function({
+  children,
+  desc="",
+  title = "123"
+}) {
   return (
     <>
-      <div className="list-title-title-small">推荐歌单 </div>
+      {desc && <div className="list-title-title-small">{desc} </div>}
       <section className="list-title-wrap">
-        <div className="list-title">领略英语魅力 </div>
-        <div className="list-other"> </div>
+        <div className="list-title">{title} </div>
+        <div className="list-other">{children} </div>
       </section>
     </>
   );

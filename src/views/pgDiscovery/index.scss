@@ -1,0 +1,27 @@
+.fixed {
+  position: fixed;
+  top: 1.1rem;
+  z-index: 100;
+  transition: all 0.5 linear;
+}
+.a {
+  width: 200px;
+  height: 100px;
+  background-color: blue;
+}
+.testlazy {
+  img {
+    transition: all 3 linear;
+  }
+  .opacityLinear{
+    animation: opacityFrames 0.5s linear ;
+  }
+  @keyframes opacityFrames {
+    0% {
+      opacity:0
+    }
+    100% {
+      opacity:1
+    }
+  }
+}

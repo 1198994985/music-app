@@ -2,7 +2,6 @@
 @mixin Ellipsis {
   position: relative;
   overflow: hidden;
-
   line-height: 1.5;
   &::before {
     content: "...";
@@ -25,18 +24,27 @@
     background-color: white;
   }
 }
-.card-img-wrapper {
-  position: relative;
-  img {
-    width: 100%;
-    border-radius: $border-radius_normal;
-  }
-}
 
 .card-wrapper {
   position: relative;
   overflow: hidden;
   // border-radius: $border-radius_normal;
+  .card-img-wrapper {
+    position: relative;
+    img {
+      width: 100%;
+      border-radius: $border-radius_normal;
+    }
+  }
+  .play-nums {
+    z-index: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0.1rem 0.1rem 0 0;
+    color: white;
+    font-size:$font-size_24;
+  }
 }
 
 .card-meta-title {
@@ -45,7 +53,7 @@
   color: $font-color_2;
 }
 .card-meta-title-Ellipsis {
-   max-height: $font-size_14 * 5.1;
+  max-height: $font-size_14 * 5.1;
   @include Ellipsis;
 }
 .card-meta-desc {

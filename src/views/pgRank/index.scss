@@ -1,0 +1,51 @@
+@import "@/asserts/globalStyle";
+$height: 0.8rem;
+$width: 1rem;
+.ranklist-wrapper {
+  @include fullScreen;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  header {
+    box-sizing: border-box;
+    padding: 0.15rem 0;
+    height: 1.1rem;
+    @include flexRowCenter(flex-start);
+    .back-button,
+    .sub-header-title {
+      @include flexRowCenter(center);
+    }
+    .back-button {
+      width: $width;
+      height: $height;
+      margin-top: -0.1rem;
+      .iconfont {
+        font-size: 0.4rem;
+      }
+    }
+    .sub-header-title {
+      font-size: $font-size_18 * 1.9;
+      color: $font-color_1;
+      font-weight: $font-weight_1;
+    }
+  }
+  .ranklist-content {
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    flex: 1;
+    padding:0.04rem 0 0;
+    .ranklist-box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      margin: 0 $screen-padding;
+      .ranklist-item {
+        flex: 0 1 30%;
+        margin-right: 3%;
+      }
+    }
+  }
+}
