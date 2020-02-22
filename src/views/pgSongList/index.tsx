@@ -8,6 +8,29 @@ import React, {
 import { Loading, Banner, Card, Meta, Tittle, SubHeader } from "@/components";
 import { useHistory } from "react-router-dom";
 import "./index.scss";
+
+export interface IPSongListItem {
+  num?:string | number;
+  songName?:string;
+  songDesc?: string;
+  onClick?: React.MouseEventHandler;
+}
+const SongListItem: React.FC<IPSongListItem> = function({
+  num = "1",
+  songName = "冯博",
+  songDesc = "这是一个非常nice的人",
+  onClick
+}) {
+  return (
+    <div className="song-list-item" onClick={onClick}>
+      <span>{num}</span>
+      <div className="song-name-desc">
+        <span className="song-name">{songName}</span>
+        <span className="song-desc">{songDesc}</span>
+      </div>
+    </div>
+  );
+};
 const PageSongList: React.FC = function() {
   return (
     <>
@@ -29,15 +52,16 @@ const PageSongList: React.FC = function() {
             </div>
           </div>
           <div className="song-list">
-            <Card imageUrl="https://p2.music.126.net/7OiIpH11Ze8yni2oGMYnpA==/109951164653671933.jpg">
-              <Meta title=" 123123213" />
-            </Card>
-            <Card imageUrl="https://p2.music.126.net/7OiIpH11Ze8yni2oGMYnpA==/109951164653671933.jpg">
-              <Meta title=" 123123213" />
-            </Card>
-            <Card imageUrl="https://p2.music.126.net/7OiIpH11Ze8yni2oGMYnpA==/109951164653671933.jpg">
-              <Meta title=" 123123213" />
-            </Card>
+            {[1, 2, 3, 4, 5].map((item, index) => {
+              return <SongListItem num={index+1} />;
+            })}
+            <SongListItem />
+            <SongListItem />
+            <SongListItem />
+            <SongListItem />
+            <SongListItem />
+            <SongListItem />
+            <SongListItem />
           </div>
         </div>
       </div>

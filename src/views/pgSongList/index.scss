@@ -59,6 +59,37 @@
       }
     }
     .song-list {
+      .song-list-item{
+        display: flex;
+        flex-direction: row;
+        &>span{
+          font-size:0.32rem;
+          color:$font-color_3;
+          flex-basis: 1.2rem;
+          line-height: 1.2rem;
+          height:1.2rem;
+          text-align: center;
+        }
+        .song-name-desc{
+          box-sizing: border-box;
+          flex:1;
+          height:1.2rem;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          border-bottom: 0.01rem solid rgb(226, 226, 226);
+        
+          .song-name{
+            font-size:0.32rem;
+            margin-bottom: 0.12rem;
+          }
+          .song-desc{
+            font-size:$font-size_22;
+            color:$font-color_3;
+          }
+        }
+      }
     }
   }
 }
