@@ -7,11 +7,13 @@ import React, {
 } from "react";
 import { Loading, Banner, Card, Meta, Tittle, SubHeader } from "@/components";
 import { useHistory } from "react-router-dom";
+import { scrollFixed } from "@/untils/imageLazy";
+
 import "./index.scss";
 
 export interface IPSongListItem {
-  num?:string | number;
-  songName?:string;
+  num?: string | number;
+  songName?: string;
   songDesc?: string;
   onClick?: React.MouseEventHandler;
 }
@@ -31,7 +33,30 @@ const SongListItem: React.FC<IPSongListItem> = function({
     </div>
   );
 };
+export interface IPPalyAllButton {
+  playNums?: string | number;
+  onClick?: React.MouseEventHandler;
+}
+const PalyAllButton: React.FC<IPPalyAllButton> = function({
+  playNums = "123",
+  onClick
+}) {
+  return (
+    <div className="song-play-button">
+      <div className="list-play-all" onClick={onClick}>
+        <i className={`iconfont icon-bofang`}> </i>
+        &nbsp; &nbsp;
+        <span>播放全部</span>
+      </div>
+      <button>+收藏({playNums})</button>
+    </div>
+  );
+};
 const PageSongList: React.FC = function() {
+  useEffect(() => {
+    scrollFixed(".song-play-button", ".songlist-wrapper", ".fixed-flag");
+    return () => {};
+  }, []);
   return (
     <>
       <div className="songlist-wrapper">
@@ -52,16 +77,12 @@ const PageSongList: React.FC = function() {
             </div>
           </div>
           <div className="song-list">
-            {[1, 2, 3, 4, 5].map((item, index) => {
-              return <SongListItem num={index+1} />;
+            <div className="fixed-flag"></div>
+            <PalyAllButton />
+            {Array.from({length:100}).map((item, index) => {
+              return <SongListItem num={index + 1} />;
             })}
-            <SongListItem />
-            <SongListItem />
-            <SongListItem />
-            <SongListItem />
-            <SongListItem />
-            <SongListItem />
-            <SongListItem />
+            
           </div>
         </div>
       </div>

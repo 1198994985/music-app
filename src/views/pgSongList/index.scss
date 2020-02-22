@@ -22,7 +22,7 @@
       box-sizing: border-box;
       height: 5rem;
       width: 100%;
-    position: relative;
+      position: relative;
 
       .bacground {
         z-index: -1;
@@ -51,7 +51,7 @@
           padding: 0 0.15rem;
           .list-title {
             font-size: $font-size_26 * 1.4;
-            font-weight:605;
+            font-weight: 605;
             line-height: 1.5;
             color: white;
           }
@@ -59,37 +59,78 @@
       }
     }
     .song-list {
-      .song-list-item{
+      .song-play-button {
+        @include flexRowCenter(space-around);
+        box-sizing: border-box;
+        height: 1.0rem;
+        width: 100%;
+        padding-left:0.5rem;
+        padding-right:0.1rem;
+
+        background-color: white;
+        border-radius: 0.5rem;
+        .list-play-all {
+          display: flex;
+          justify-content: flex-start;
+          flex: 1;
+          .icon-bofang {
+            font-size: 0.36rem;
+            color: $font-color_2;
+          }
+          span {
+            font-size: 0.36rem;
+          }
+        }
+        & > button {
+          height: 0.8rem;
+          background-color: $theme-color-shadow;
+          border-radius: 0.4rem;
+          border-color: transparent; //自定义边框
+          outline: none;
+          color: white;
+          width:2.4rem;
+        }
+      }
+      .song-list-item {
         display: flex;
         flex-direction: row;
-        &>span{
-          font-size:0.32rem;
-          color:$font-color_3;
+        & > span {
+          font-size: 0.32rem;
+          color: $font-color_3;
           flex-basis: 1.2rem;
           line-height: 1.2rem;
-          height:1.2rem;
+          height: 1.2rem;
           text-align: center;
         }
-        .song-name-desc{
+        .song-name-desc {
           box-sizing: border-box;
-          flex:1;
-          height:1.2rem;
+          flex: 1;
+          height: 1.2rem;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           justify-content: center;
           border-bottom: 0.01rem solid rgb(226, 226, 226);
-        
-          .song-name{
-            font-size:0.32rem;
+
+          .song-name {
+            font-size: 0.32rem;
             margin-bottom: 0.12rem;
           }
-          .song-desc{
-            font-size:$font-size_22;
-            color:$font-color_3;
+          .song-desc {
+            font-size: $font-size_22;
+            color: $font-color_3;
           }
         }
       }
     }
   }
+}
+.fixed-flag {
+  height: 0.001rem;
+  transform: translateY(-1.1rem);
+}
+.fixed {
+  position: fixed;
+  top: 1.1rem;
+  z-index: 100;
 }

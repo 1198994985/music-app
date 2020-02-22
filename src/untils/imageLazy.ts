@@ -1,15 +1,15 @@
-export let imageLzy = function (imgSelector: string,fn?:(el?:any)=>void) {
+export let imageLzy = function(imgSelector: string, fn?: (el?: any) => void) {
   let observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       try {
-         if (entry && entry.isIntersecting) {
-           // @ts-ignore
-           if (entry.target.dataset.src) {
-             // @ts-ignore
-             entry.target.src = entry.target.dataset.src;
-             if(typeof fn ==="function") fn(entry.target);
-           }
-           observer.unobserve(entry.target);
+        if (entry && entry.isIntersecting) {
+          // @ts-ignore
+          if (entry.target.dataset.src) {
+            // @ts-ignore
+            entry.target.src = entry.target.dataset.src;
+            if (typeof fn === "function") fn(entry.target);
+          }
+          observer.unobserve(entry.target);
         }
       } catch (error) {
         console.log(error);
@@ -23,7 +23,7 @@ export let imageLzy = function (imgSelector: string,fn?:(el?:any)=>void) {
 };
 
 /**
- * 
+ *
  * @param sub {string} 选择器，需要吸顶的元素
  * @param container {string} 容器
  * @param reference {string} 这个元素要放到sub的正上方，作为参照，要存在高度
@@ -31,7 +31,8 @@ export let imageLzy = function (imgSelector: string,fn?:(el?:any)=>void) {
 export const scrollFixed = function(
   sub: string,
   container: string,
-  reference: string
+  reference: string,
+  offset?: number 
 ) {
   const header = document.querySelector(sub);
   const fixedTopReference = document.querySelector(reference);
@@ -42,19 +43,18 @@ export const scrollFixed = function(
     entries => {
       entries.forEach(entry => {
         try {
-           if (
-             !entry.isIntersecting &&
-             entry.boundingClientRect.top <
-               catinerDom!.getBoundingClientRect().top
-           ) {
-             header.classList.add("fixed");
-           } else {
-             header.classList.remove("fixed");
-           }
+          if (
+            !entry.isIntersecting &&
+            entry.boundingClientRect.top <
+              catinerDom!.getBoundingClientRect().top
+          ) {
+            header.classList.add("fixed");
+          } else {
+            header.classList.remove("fixed");
+          }
         } catch (error) {
-        console.log(error);
+          console.log(error);
         }
-       
       });
     },
     {
