@@ -1,6 +1,6 @@
-import {combineReducers} from "redux"
+import discovery from "@/views/pgDiscovery/store/reducer";
+import { combineReducers } from "redux";
 
-
-export  default combineReducers({
-
-})
+export const Reducers =  combineReducers({
+  discovery
+});
