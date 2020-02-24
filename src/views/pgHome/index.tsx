@@ -5,7 +5,7 @@ import "./index.scss";
 let tabBars: Array<any> = [
   {
     title: "我的",
-    paths: "/home/my"
+    paths: "/home/rank"
   },
   {
     title: "发现",

@@ -44,9 +44,14 @@ const routeConfigs: RouteConfig[] = [
         component: lazyComponet(SongListComponent)
       },
       {
-        exact: true,
-        path: "/home/my",
-        component: lazyComponet(RankListComponent)
+        path: "/home/rank",
+        component: lazyComponet(RankListComponent),
+        routes: [
+          {
+            path: "/home/rank/:id",
+            component: lazyComponet(SongListComponent)
+          }
+        ]
       }
     ]
   },

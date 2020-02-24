@@ -57,6 +57,7 @@ const PageSongList: React.FC = function() {
     scrollFixed(".song-play-button", ".songlist-wrapper", ".fixed-flag");
     return () => {};
   }, []);
+  console.log("123123123");
   return (
     <>
       <div className="songlist-wrapper">
