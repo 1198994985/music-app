@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { Redirect } from "react-router-dom";
 import { RouteConfig } from "react-router-config";
-import {Loading} from "@/components"
+import { Loading } from "@/components";
 const lazyComponet = (Component: React.ElementType) => (props: any) => {
   return (
     <Suspense fallback={null}>
@@ -42,16 +42,16 @@ const routeConfigs: RouteConfig[] = [
         exact: true,
         path: "/home/vedio",
         component: lazyComponet(SongListComponent)
-      },
+      }
+    ]
+  },
+  {
+    path: "/rank",
+    component: lazyComponet(RankListComponent),
+    routes: [
       {
-        path: "/home/rank",
-        component: lazyComponet(RankListComponent),
-        routes: [
-          {
-            path: "/home/rank/:id",
-            component: lazyComponet(SongListComponent)
-          }
-        ]
+        path: "/rank/:id",
+        component: lazyComponet(SongListComponent)
       }
     ]
   },

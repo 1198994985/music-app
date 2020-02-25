@@ -38,6 +38,7 @@ const PageDiscovery: React.FC = () => {
     if (!recommendList.recommendDjList.length) dispatch(getRecommdDjList());
     if (!recommendList.recommendMvList.length) dispatch(getRecommdMvList());
   }, [bannerList.length, dispatch, recommendList]);
+
   return (
     <>
       {bannerList && <Banner bannerList={bannerList} />}
@@ -55,7 +56,7 @@ const PageDiscovery: React.FC = () => {
       <Tittle desc="电台推荐" title="为你精挑细选" />
       <RowSlider nums={3} recommendList={recommendList.recommendDjList} />
 
-      <div className="testlazy" style={{ width: 200, height: 200 }}>
+      <div className="testlazy" style={{ width: 200}}>
         <img alt="" data-src={tempUrl} width="100%" height="400px" />
         <img alt="" data-src={tempUrl} width="100%" height="400px" />
         <img alt="" data-src={tempUrl} width="100%" height="400px" />

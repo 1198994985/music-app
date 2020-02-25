@@ -5,9 +5,10 @@
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  z-index:20;
+  z-index: 101;
   .sub-header {
     color: white;
+    width: 100%;
     .sub-header-title {
       color: white;
     }
@@ -47,26 +48,47 @@
         .song-detail {
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
+          justify-content: space-around;
           flex: 1;
           padding: 0 0.15rem;
           .list-title {
             font-size: $font-size_26 * 1.4;
             font-weight: 605;
             line-height: 1.5;
+            max-height: 1.092rem;
+            overflow: hidden;
             color: white;
+          }
+          .author {
+            margin-left: 0.27rem;
+            display: flex;
+            span {
+              margin-left: 0.1rem;
+              line-height: 0.6rem;
+              color: rgb(187, 168, 168);
+              font-size: $font-size_26;
+            }
+            & > img {
+              width: 0.6rem;
+              height: 0.6rem;
+              border-radius: 50%;
+            }
           }
         }
       }
     }
     .song-list {
+      padding-top: 1rem;
+      position: relative;
       .song-play-button {
+        position: absolute;
+        top: 0;
         @include flexRowCenter(space-around);
         box-sizing: border-box;
-        height: 1.0rem;
+        height: 1rem;
         width: 100%;
-        padding-left:0.5rem;
-        padding-right:0.1rem;
+        padding-left: 0.5rem;
+        padding-right: 0.1rem;
         background-color: white;
         border-radius: 0.5rem;
         .list-play-all {
@@ -77,8 +99,14 @@
             font-size: 0.36rem;
             color: $font-color_2;
           }
-          span {
+          span:nth-child(2) {
             font-size: 0.36rem;
+          }
+          span:nth-child(3) {
+            margin-left: 0.2rem;
+            font-size: 0.3rem;
+            line-height: 0.36rem;
+            color: rgb(150, 130, 115);
           }
         }
         & > button {
@@ -88,7 +116,7 @@
           border-color: transparent; //自定义边框
           outline: none;
           color: white;
-          width:2.4rem;
+          width: 2.4rem;
         }
       }
       .song-list-item {
@@ -106,15 +134,20 @@
           box-sizing: border-box;
           flex: 1;
           height: 1.2rem;
-          display: flex;
+          display: inline-flex;
           flex-direction: column;
           align-items: flex-start;
           justify-content: center;
           border-bottom: 0.01rem solid rgb(226, 226, 226);
+          overflow: hidden;
 
           .song-name {
-            font-size: 0.32rem;
             margin-bottom: 0.12rem;
+            width:100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 0.32rem;
           }
           .song-desc {
             font-size: $font-size_22;
@@ -126,10 +159,19 @@
   }
 }
 .fixed-flag {
+  position: absolute;
+  top: 0;
   transform: translateY(-1.1rem);
 }
 .fixed {
-  position: fixed;
-  top: 1.1rem;
+  position: fixed !important;
+  top: 1.1rem !important;
   z-index: 100;
+}
+.head-white-temp {
+  background-color: white;
+  color: black !important;
+}
+.sub-header-title-temp {
+  color: black !important;
 }

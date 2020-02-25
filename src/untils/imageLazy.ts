@@ -32,7 +32,7 @@ export const scrollFixed = function(
   sub: string,
   container: string,
   reference: string,
-  offset?: number 
+  fn?: (el?: any) => void
 ) {
   const header = document.querySelector(sub);
   const fixedTopReference = document.querySelector(reference);
@@ -49,8 +49,10 @@ export const scrollFixed = function(
               catinerDom!.getBoundingClientRect().top
           ) {
             header.classList.add("fixed");
+            if (typeof fn === "function") fn(entry.isIntersecting);
           } else {
             header.classList.remove("fixed");
+            if (typeof fn === "function") fn(entry.isIntersecting);
           }
         } catch (error) {
           console.log(error);

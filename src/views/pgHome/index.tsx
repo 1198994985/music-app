@@ -1,11 +1,12 @@
 import React from "react";
 import { renderRoutes, RouteConfig } from "react-router-config";
 import { NavLink } from "react-router-dom";
+import Scroll from "@/components/scroll/index";
 import "./index.scss";
 let tabBars: Array<any> = [
   {
     title: "我的",
-    paths: "/home/rank"
+    paths: "/rank"
   },
   {
     title: "发现",
@@ -44,9 +45,9 @@ const Home: React.FC<IPHome> = function({ route }) {
           <i className={`iconfont icon-chazhao`}></i>
         </div>
       </header>
-      <article className="home-warp">
-        {renderRoutes(route.routes)}
-      </article>
+      <Scroll direction={"vertical"}>
+        <article className="home-warp">{renderRoutes(route.routes)}</article>
+      </Scroll>
     </>
   );
 };

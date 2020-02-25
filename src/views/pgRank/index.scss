@@ -7,6 +7,7 @@ $width: 1rem;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  z-index:101;
   .sub-header {
     box-sizing: border-box;
     padding: 0.15rem 0;

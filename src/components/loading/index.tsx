@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import "./index.scss";
 
+export const LoadingContainer: React.FC = ({children}) => {
+  return <div className="loading-container">{children}</div>;
+}
+
+
 export interface IPLoading {
   isLoading?: boolean;
   className?: string;
@@ -11,9 +16,9 @@ export interface IPLoading {
 const Loading: React.FC<IPLoading> = ({
   isLoading = true,
   className,
-  dur = 0.7,
-  color = "#F73A3A",
-  size="middle"
+  dur = 0.5,
+  color = "#ff2007",
+  size = "middle"
 }) => {
   if (!isLoading) {
     return null;
@@ -22,7 +27,7 @@ const Loading: React.FC<IPLoading> = ({
     <svg
       viewBox="0 0 32 32"
       fill={color}
-      className={`icon-loading-${size} ` + className}
+      className={`icon-loading icon-loading-${size} ` + className}
     >
       <circle cx="16" cy="3" r="0" fillOpacity=".1">
         <animate

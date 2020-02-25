@@ -1,11 +1,10 @@
 @import "@/asserts/globalStyle";
 .row-slider-wrap {
   display: flex;
-  overflow-x: auto;
-  width: 100%;
-  margin-left: $screen-padding;
+  padding-left: $screen-padding;
   flex-direction: row;
   flex-wrap: nowrap;
+  overflow-x: auto;
   &::-webkit-scrollbar {
     display: none;
   }

@@ -1,14 +1,29 @@
+.icon-loading{
+  margin: auto;
+
+}
 .icon-loading-small {
   width: 0.4rem;
   height: 0.4rem;
 }
 .icon-loading-big {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .icon-loading-middle {
   width: 0.8rem;
   height: 0.8rem;
+}
+.loading-container{
+  position: fixed;
+  z-index:1000;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  background-color: white;
+  display: flex;
+  
 }
 // .icon-wrap {
 //   display: flex;
