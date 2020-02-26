@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Loading, Banner, Card, Meta, Tittle } from "@/components";
 import { RowSlider, Nav } from "./components/";
 import { imageLzy } from "@/untils/imageLazy";
+
 import {
   getBannerList,
   getRecommdList,
@@ -40,7 +41,7 @@ const PageDiscovery: React.FC = () => {
   }, [bannerList.length, dispatch, recommendList]);
 
   return (
-    <>
+    <article className="home-warp">
       {bannerList && <Banner bannerList={bannerList} />}
       <Nav />
       <br />
@@ -56,7 +57,7 @@ const PageDiscovery: React.FC = () => {
       <Tittle desc="电台推荐" title="为你精挑细选" />
       <RowSlider nums={3} recommendList={recommendList.recommendDjList} />
 
-      <div className="testlazy" style={{ width: 200}}>
+      <div className="testlazy" style={{ width: 200 }}>
         <img alt="" data-src={tempUrl} width="100%" height="400px" />
         <img alt="" data-src={tempUrl} width="100%" height="400px" />
         <img alt="" data-src={tempUrl} width="100%" height="400px" />
@@ -70,7 +71,7 @@ const PageDiscovery: React.FC = () => {
       <Loading size="big" />
       <Loading size="middle" />
       <Loading size="small" />
-    </>
+    </article>
   );
 };
 export default React.memo(PageDiscovery);

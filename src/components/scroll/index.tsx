@@ -5,13 +5,34 @@ import React, {
   useRef,
   useImperativeHandle
 } from "react";
-import BScroll from "better-scroll";
 
+import BScroll from "better-scroll";
+import { Loading, LoadingContainer } from "@/components";
+import "./index.scss"
 // import { debounce } from '"utils/utils";'
 import { debounce } from "@/untils/debounce.js";
 
 const style = { width: "100%", height: "100%", overflow: "hidden" };
+const PullUpLoadingStyle = {
+  "z-index": "100",
+  position: "absolute",
+  left: 0,
+  right: 0,
+  bottom: "5px",
+  width: " 60px",
+  height: "60px",
+  margin: "auto"
+};
 
+export const PullDownLoadingStyle = {
+  position: "absolute",
+  left: 0,
+  right: 0,
+  top: "0",
+  height:" 30px",
+  margin: "auto",
+  "z-index": "100",
+};
 interface ScrollProps {
   direction?: "vertical" | "horizontal";
   refresh?: boolean;
@@ -130,6 +151,14 @@ const Scroll = forwardRef<any, ScrollProps>((props, ref) => {
   return (
     <div style={style} ref={scrollContainerRef}>
       {props.children}
+      {/* 滑到底部加载动画 */}
+      <div style={PullUpdisplayStyle} className="loading-up">
+        <Loading />
+      </div>
+      {/* 顶部下拉刷新动画 */}
+      <div style={PullDowndisplayStyle} className="loading-down">
+        <Loading size="middle" positionStyle="0 auto"/>
+      </div>
     </div>
   );
 });

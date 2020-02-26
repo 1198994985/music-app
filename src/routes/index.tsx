@@ -12,7 +12,7 @@ const lazyComponet = (Component: React.ElementType) => (props: any) => {
 
 const HomeComponent = lazy(() => import("../views/pgHome"));
 const DiscoveryComponent = lazy(() => import("@/views/pgDiscovery"));
-const BannerComponent = lazy(() => import("@/components/banner"));
+const SingerComponent = lazy(() => import("../views/pgSinger"));
 const RankListComponent = lazy(() => import("../views/pgRank"));
 const SongListComponent = lazy(() => import("../views/pgSongList"));
 
@@ -40,8 +40,8 @@ const routeConfigs: RouteConfig[] = [
       },
       {
         exact: true,
-        path: "/home/vedio",
-        component: lazyComponet(SongListComponent)
+        path: "/home/singer",
+        component: lazyComponet(SingerComponent)
       }
     ]
   },

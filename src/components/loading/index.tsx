@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import "./index.scss";
+interface IPLoadingContainer{
+  positionStyle?: "fixed" | "absolute";
 
-export const LoadingContainer: React.FC = ({children}) => {
-  return <div className="loading-container">{children}</div>;
 }
+export const LoadingContainer: React.FC<IPLoadingContainer> = ({
+         children,
+         positionStyle = "fixed"
+       }) => {
+         return (
+           <div
+             className="loading-container"
+             style={{ position: positionStyle }}
+           >
+             {children}
+           </div>
+         );
+       };
 
 
 export interface IPLoading {
@@ -11,14 +24,16 @@ export interface IPLoading {
   className?: string;
   dur?: number;
   color?: string;
-  size?:"small" | "middle" |"big"
+  size?: "small" | "middle" | "big";
+  positionStyle?:string;
 }
 const Loading: React.FC<IPLoading> = ({
   isLoading = true,
   className,
   dur = 0.5,
   color = "#ff2007",
-  size = "middle"
+  size = "middle",
+  positionStyle="auto"
 }) => {
   if (!isLoading) {
     return null;
@@ -27,7 +42,10 @@ const Loading: React.FC<IPLoading> = ({
     <svg
       viewBox="0 0 32 32"
       fill={color}
-      className={`icon-loading icon-loading-${size} ` + className}
+      className={`icon-loading-${size} ` + className}
+      style={{
+        margin: positionStyle
+      }}
     >
       <circle cx="16" cy="3" r="0" fillOpacity=".1">
         <animate

@@ -1,7 +1,9 @@
-export let imageLzy = function(imgSelector: string, fn?: (el?: any) => void) {
+export let imageLzy = function (imgSelector: string, fn?: (el?: any) => void) {
+  
   let observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       try {
+
         if (entry && entry.isIntersecting) {
           // @ts-ignore
           if (entry.target.dataset.src) {

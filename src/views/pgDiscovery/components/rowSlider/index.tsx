@@ -66,7 +66,7 @@ const RowSlider: React.FC<IPRowSlider> = function({
             >
               <Card
                 width={"100"}
-                imageUrl={item.picUrl}
+                imageUrl={item.picUrl + "?param=300x300"}
                 playNums={item.playCount}
               >
                 <Meta title={item.name} />

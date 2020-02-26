@@ -1,0 +1,31 @@
+@import "@/asserts/globalStyle";
+.horizontal-list {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  justify-content: center;
+  overflow: hidden;
+  padding-left: $screen-padding;
+  padding-right: $screen-padding;
+
+  & > span:first-of-type {
+    display: block;
+    flex: 0 0 auto;
+    color: $font-color_2;
+    font-size: 0.26rem;
+  }
+  .horizontal-list-item {
+    flex: 0 0 auto;
+    font-size: 0.26rem;
+    padding: 5px 8px;
+    border-radius: 10px;
+      color: grey;
+
+    &.selected {
+      color: red;
+
+      border: 1px solid;
+      opacity: 0.8;
+    }
+  }
+}

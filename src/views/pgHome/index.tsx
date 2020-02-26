@@ -18,7 +18,7 @@ let tabBars: Array<any> = [
   },
   {
     title: "视频",
-    paths: "/home/vedio"
+    paths: "/home/singer"
   }
 ];
 export interface IPHome {
@@ -45,9 +45,8 @@ const Home: React.FC<IPHome> = function({ route }) {
           <i className={`iconfont icon-chazhao`}></i>
         </div>
       </header>
-      <Scroll direction={"vertical"}>
-        <article className="home-warp">{renderRoutes(route.routes)}</article>
-      </Scroll>
+      
+       {renderRoutes(route.routes)}
     </>
   );
 };
