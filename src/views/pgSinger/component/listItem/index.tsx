@@ -7,18 +7,25 @@ interface IPlistItem {
   imageUrl?: string;
   name?: string;
   handleClick?: () => void;
+  islazy?: boolean;
 }
 const ListItem: React.FC<IPlistItem> = function({
   imageUrl = "",
   name = "冯博",
-  handleClick
+  handleClick,
+  islazy=true
 }) {
   const onClick1: React.MouseEventHandler = () => {
     if (handleClick) handleClick();
   }
   return (
     <div className="singer-list-item" onClick={onClick1}>
-      <img data-src={imageUrl} width="1rem" height="1rem" alt="music" />
+      {islazy ? (
+        <img data-src={imageUrl} width="1rem" height="1rem" alt="music" />
+      ) : (
+        <img src={imageUrl} width="1rem" height="1rem" alt="music" />
+      )}
+
       <div className="singer-list-name">{name}</div>
     </div>
   );

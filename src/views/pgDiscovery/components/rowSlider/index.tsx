@@ -15,13 +15,14 @@ export interface recommendItem {
   name: string;
   copywriter: string;
   playCount?: string | number;
+  id?: string;
 }
 
 export interface IPRowSlider {
   nums?: number; // 宽度100%，显示的item数量
   children?: React.ReactNode | string;
   recommendList?: recommendItem[];
-  onClick?: React.MouseEventHandler;
+  onClick?: any;
 }
 const RowSlider: React.FC<IPRowSlider> = function({
   children,
@@ -62,7 +63,7 @@ const RowSlider: React.FC<IPRowSlider> = function({
               className="row-slider-item"
               style={itemStyle}
               key={item.picUrl + index}
-              onClick={onClick}
+              onClick={()=>{onClick(item.id)}}
             >
               <Card
                 width={"100"}

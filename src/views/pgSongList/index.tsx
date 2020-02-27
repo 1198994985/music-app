@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import Scroll from "@/components/scroll/index";
 
-import { getSongList } from "./store/";
+import { getSongList, getSingerInfo } from "./store/";
 
 import "./index.scss";
 
@@ -44,9 +44,9 @@ export interface IPPalyAllButton {
   songNums?: string | number;
 }
 const PalyAllButton: React.FC<IPPalyAllButton> = function({
-  playNums = "123",
   onClick,
-  songNums
+  songNums,
+  playNums = "123"
 }) {
   return (
     <div className="song-play-button">
@@ -60,13 +60,19 @@ const PalyAllButton: React.FC<IPPalyAllButton> = function({
     </div>
   );
 };
-const PageSongList: React.FC = function() {
+
+const PageSongList: React.FC<{ _type: "song" | "singer" }> = function({
+  _type = "song"
+}) {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const songList = useSelector((state: any) => state.songList.songList);
+  const history = useHistory();
+
+  const songList = useSelector((state: any) => {
+       return state.songList.songList;
+  });
   const description = useSelector((state: any) => state.songList.description);
   const isloading = useSelector((state: any) => state.songList.isloading);
-  const history = useHistory();
 
   useEffect(() => {
     // sub-header-title
@@ -74,7 +80,6 @@ const PageSongList: React.FC = function() {
     let headerTitle = document.querySelector(
       ".songlist-wrapper .sub-header-title"
     );
-
     scrollFixed(
       ".song-play-button",
       ".songlist-wrapper",
@@ -90,11 +95,15 @@ const PageSongList: React.FC = function() {
       }
     );
     if (id) {
-      dispatch(getSongList(id));
+      if (history.location.pathname.includes("rank")) {
+        dispatch(getSongList(id));
+      } else {
+        dispatch(getSingerInfo(id));
+      }
     }
 
     return () => {};
-  }, [dispatch, id]);
+  }, [dispatch, history.location.pathname, id]);
 
   const handleGoBack = useCallback(
     e => {
@@ -115,21 +124,30 @@ const PageSongList: React.FC = function() {
           <div className="song-list-desc">
             <div
               className="bacground"
-              style={{ background: `url(${description.coverImgUrl})` }}
+              style={{
+                background: `url(${description.coverImgUrl + "?param=200x200"})`
+              }}
             >
               <div className="filter"></div>
             </div>
             <div className="song-desc-center">
-              <Card imageUrl={description.coverImgUrl} width="36" />
+              <Card
+                imageUrl={description.coverImgUrl + "?param=300x300"}
+                width="36"
+              />
               <div className="song-detail">
                 <Tittle title={description.description} />
                 <div className="author">
-                  <img src={description.avatarUrl} alt="author" />
+                  <img
+                    src={description.avatarUrl + "?param=40x40"}
+                    alt="author"
+                  />
                   <span>{description.nickname}</span>
                 </div>
               </div>
             </div>
           </div>
+
           <div className="song-list">
             <div className="fixed-flag"></div>
             <PalyAllButton
@@ -140,7 +158,11 @@ const PageSongList: React.FC = function() {
               return (
                 <SongListItem
                   num={index + 1}
-                  songName={item.name}
+                  songName={
+                    history.location.pathname.includes("rank")
+                      ? item.name
+                      : item.al.name
+                  }
                   songDesc={item.ar[0].name}
                   key={index + item.name}
                 />

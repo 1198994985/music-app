@@ -1,6 +1,6 @@
 import { Children } from "react";
 
-export const debounce = (fn, time, immediate) => {
+export const debounce = (fn, time=300, immediate) => {
   let timeout, result;
   return function(...args) {
     let that = this;

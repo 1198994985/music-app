@@ -40,6 +40,7 @@
           background: rgba(7, 17, 27, 0.2);
         }
       }
+     
       .song-desc-center {
         padding: 1.3rem $screen-padding 0;
         display: flex;
@@ -143,7 +144,7 @@
 
           .song-name {
             margin-bottom: 0.12rem;
-            width:100%;
+            width: 100%;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;

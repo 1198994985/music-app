@@ -7,8 +7,11 @@ import React, {
 } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Loading, Banner, Card, Meta, Tittle } from "@/components";
+import { useHistory } from "react-router-dom";
+
 import { RowSlider, Nav } from "./components/";
 import { imageLzy } from "@/untils/imageLazy";
+import Scroll from "@/components/scroll/index";
 
 import {
   getBannerList,
@@ -22,6 +25,7 @@ var tempUrl =
 
 const PageDiscovery: React.FC = () => {
   const bannerList = useSelector((state: any) => state.discovery.bannerList);
+  const history = useHistory();
   const recommendList = useSelector(
     (state: any) => state.discovery.recommendList
   );
@@ -39,39 +43,33 @@ const PageDiscovery: React.FC = () => {
     if (!recommendList.recommendDjList.length) dispatch(getRecommdDjList());
     if (!recommendList.recommendMvList.length) dispatch(getRecommdMvList());
   }, [bannerList.length, dispatch, recommendList]);
+  const handleClick = (id: number) => {
+    history.push("/rank/"+id)
 
+  };
   return (
-    <article className="home-warp">
-      {bannerList && <Banner bannerList={bannerList} />}
-      <Nav />
-      <br />
-      <Tittle desc="歌单推荐" title="为你精挑细选" />
-      <RowSlider nums={3} recommendList={recommendList.recommendSongList} />
-      <br />
-      <br />
+    <Scroll direction={"vertical"}>
+      <article className="home-warp">
+        {bannerList && <Banner bannerList={bannerList} />}
+        <Nav />
+        <br />
+        <Tittle desc="歌单推荐" title="为你精挑细选" />
+        <RowSlider
+          nums={3}
+          recommendList={recommendList.recommendSongList}
+          onClick={handleClick}
+        />
+        <br />
+        <br />
 
-      <Tittle desc="MV推荐" title="为你精挑细选" />
-      <RowSlider nums={2} recommendList={recommendList.recommendMvList} />
-      <br />
-      <br />
-      <Tittle desc="电台推荐" title="为你精挑细选" />
-      <RowSlider nums={3} recommendList={recommendList.recommendDjList} />
-
-      <div className="testlazy" style={{ width: 200 }}>
-        <img alt="" data-src={tempUrl} width="100%" height="400px" />
-        <img alt="" data-src={tempUrl} width="100%" height="400px" />
-        <img alt="" data-src={tempUrl} width="100%" height="400px" />
-        <img alt="" data-src={tempUrl} width="100%" height="400px" />
-        <img alt="" data-src={tempUrl} width="100%" height="400px" />
-        <img alt="" data-src={tempUrl} width="100%" height="400px" />
-        <img alt="" data-src={tempUrl} width="100%" height="400px" />
-        <img alt="" data-src={tempUrl} width="100%" height="400px" />
-        <img alt="" data-src={tempUrl} width="100%" height="400px" />
-      </div>
-      <Loading size="big" />
-      <Loading size="middle" />
-      <Loading size="small" />
-    </article>
+        <Tittle desc="MV推荐" title="为你精挑细选" />
+        <RowSlider nums={2} recommendList={recommendList.recommendMvList} />
+        <br />
+        <br />
+        <Tittle desc="电台推荐" title="为你精挑细选" />
+        <RowSlider nums={3} recommendList={recommendList.recommendDjList} />
+      </article>
+    </Scroll>
   );
 };
 export default React.memo(PageDiscovery);
