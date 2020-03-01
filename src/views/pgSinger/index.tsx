@@ -26,7 +26,6 @@ const PageSinger: React.FC<IPageSinger> = function({ route }) {
   const history = useHistory();
 
   const dispatch = useDispatch();
-  console.log(singerList);
   useEffect(() => {
     dispatch(getSingerList(category as string, alpha as string, 100));
   }, [alpha, category, dispatch]);

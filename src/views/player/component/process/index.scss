@@ -1,0 +1,23 @@
+.fb-process-wrap {
+  position: relative;
+  width: 70%;
+  height: 0.06rem;
+  background: rgba(0, 0, 0, 0.3);
+  z-index:20;
+  .fb-process {
+    position: absolute;
+    background-color: red;
+    height: 100%;
+  }
+  .fb-process-btn {
+    position: absolute;
+    top:50%;
+    transform: translate(0,-50%);
+    width: 0.28rem;
+    height: 0.28rem;
+    background: red;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 0.05rem solid rgb(255, 255, 255);
+  }
+}

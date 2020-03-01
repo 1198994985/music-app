@@ -16,6 +16,7 @@ const SingerComponent = lazy(() => import("../views/pgSinger"));
 const RankListComponent = lazy(() => import("../views/pgRank"));
 const SongListComponent = lazy(() => import("../views/pgSongList"));
 const SearchComponent = lazy(() => import("../views/pgSearch"));
+const PlayerComponent = lazy(() => import("../views/player"));
 
 const routeConfigs: RouteConfig[] = [
   { path: "/", exact: true, render: () => <Redirect to={"/home"} /> },
@@ -65,10 +66,7 @@ const routeConfigs: RouteConfig[] = [
     path: "/search",
     component: lazyComponet(SearchComponent)
   },
-  {
-    path: "/loginPhone",
-    component: lazyComponet(HomeComponent)
-  },
+ 
   {
     path: "/loginPassword",
     component: lazyComponet(HomeComponent)

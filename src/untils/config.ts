@@ -1,3 +1,31 @@
+
+export type palyModeType = {
+  sequence: number;
+  loop: number;
+  random: number;
+};
+
+//播放模式
+export const playMode: palyModeType = {
+  sequence: 0,
+  loop: 1,
+  random: 2,
+};
+
+// 找到当前的歌曲索引
+export const findIndex = (song: any, list: any) => {
+  return list.findIndex((item: any) => {
+    return song.id === item.id;
+  });
+};
+//转换歌曲播放时间
+export const formatPlayTime = (interval: number | string) => {
+  interval = Number(interval);
+  interval = interval | 0;
+  const minute = (interval / 60) | 0;
+  const second = (interval % 60).toString().padStart(2, '0');
+  return `${minute}:${second}`;
+};
 //排行榜编号
 export const RankTypes = {
   "0": "云音乐新歌榜",

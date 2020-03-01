@@ -2,7 +2,7 @@ import React from "react";
 import { renderRoutes, RouteConfig } from "react-router-config";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-
+import Player from "../player";
 import "./index.scss";
 let tabBars: Array<any> = [
   {
@@ -50,7 +50,6 @@ const Home: React.FC<IPHome> = function({ route }) {
           <i className={`iconfont icon-chazhao`}></i>
         </div>
       </header>
-
       {renderRoutes(route.routes)}
     </>
   );

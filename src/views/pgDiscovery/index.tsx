@@ -31,7 +31,6 @@ const PageDiscovery: React.FC = () => {
   );
 
   const dispatch = useDispatch();
-  console.log(recommendList);
   useEffect(() => {
     imageLzy("img", el => {
       el.classList.add("opacityLinear");

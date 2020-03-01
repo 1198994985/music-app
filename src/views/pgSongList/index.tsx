@@ -7,6 +7,12 @@ import {
   Tittle,
   SubHeader
 } from "@/components";
+import {
+  changePlayingState,
+  changeSequencePlayList,
+  changeCurrentIndex,
+  changePlayList
+} from "../player/store/actionCreators";
 import { scrollFixed } from "@/untils/imageLazy";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
@@ -20,7 +26,7 @@ export interface IPSongListItem {
   num?: string | number;
   songName?: string;
   songDesc?: string;
-  onClick?: React.MouseEventHandler;
+  onClick?: any;
 }
 const SongListItem: React.FC<IPSongListItem> = function({
   num = "1",
@@ -40,7 +46,7 @@ const SongListItem: React.FC<IPSongListItem> = function({
 };
 export interface IPPalyAllButton {
   playNums?: string | number;
-  onClick?: React.MouseEventHandler;
+  onClick?: any;
   songNums?: string | number;
 }
 const PalyAllButton: React.FC<IPPalyAllButton> = function({
@@ -69,10 +75,15 @@ const PageSongList: React.FC<{ _type: "song" | "singer" }> = function({
   const history = useHistory();
 
   const songList = useSelector((state: any) => {
-       return state.songList.songList;
+    return state.songList.songList;
   });
   const description = useSelector((state: any) => state.songList.description);
   const isloading = useSelector((state: any) => state.songList.isloading);
+  const handleClickAll = function(index: any=0)  {
+    dispatch(changePlayList(songList));
+    dispatch(changeSequencePlayList(songList));
+    dispatch(changeCurrentIndex(index));
+  };
 
   useEffect(() => {
     // sub-header-title
@@ -153,6 +164,7 @@ const PageSongList: React.FC<{ _type: "song" | "singer" }> = function({
             <PalyAllButton
               playNums={description.subscribedCount}
               songNums={songList.length}
+              onClick={()=>{handleClickAll(0);}}
             />
             {songList.map((item: any, index: number) => {
               return (
@@ -165,6 +177,7 @@ const PageSongList: React.FC<{ _type: "song" | "singer" }> = function({
                   }
                   songDesc={item.ar[0].name}
                   key={index + item.name}
+                  onClick={handleClickAll.bind(undefined,index)}
                 />
               );
             })}

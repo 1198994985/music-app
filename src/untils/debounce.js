@@ -30,6 +30,7 @@ const throttle = (fn, wait, immediate) => {
       timeout = setTimeout(() => {
         timeout = null;
       }, wait);
+      return;
     }
     if (!timeout) {
       timeout = setTimeout(() => {

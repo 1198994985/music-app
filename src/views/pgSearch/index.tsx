@@ -5,6 +5,12 @@ import { debounce } from "@/untils/debounce.js";
 import ListItem from "../pgSinger/component/listItem";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
+import {
+  changePlayingState,
+  changeSequencePlayList,
+  changeCurrentIndex,
+  changePlayList
+} from "../player/store/actionCreators";
 import "./index.scss";
 const defaultState = {
   serachValue: "",
@@ -53,6 +59,13 @@ const PgSearch: React.FC = () => {
   useEffect(() => {
     if (state.serachValue) rqSongList(state.serachValue, dispatch);
   }, [state.serachValue]);
+
+  const handleClickAll = useCallback(function (index: any = 0) {
+    console.log(index, state.songList.songs);
+    dispatch(changePlayList(state.songList.songs || []));
+    dispatch(changeSequencePlayList(state.songList.songs || []));
+    dispatch(changeCurrentIndex(index));
+  }, [state.songList]);
   const handleGoBack = useCallback(
     e => {
       history.go(-1);
@@ -64,31 +77,38 @@ const PgSearch: React.FC = () => {
     let singer = [];
 
     if (state.songList && state.songList.songs) {
-      songs = state.songList?.songs?.map((item: any) => {
-        return (
-          <div className="song-list-item" key={item.id}>
-            <div className="song-name-desc">
-              <span className="song-name">{item.name}</span>
-              <span className="song-desc">
-                {item?.alias[0] && item?.alias[0] + " " + item?.artists[0].name}
-              </span>
+      songs =
+        state.songList?.songs?.map((item: any, index: number) => {
+          return (
+            <div
+              className="song-list-item"
+              key={item.id}
+              onClick={()=>{handleClickAll(index);}}
+            >
+              <div className="song-name-desc">
+                <span className="song-name">{item.name}</span>
+                <span className="song-desc">
+                  {item?.alias[0] &&
+                    item?.alias[0] + " " + item?.artists[0].name}
+                </span>
+              </div>
             </div>
-          </div>
-        );
-      }) || [];
-      singer = state.songList?.artists?.map((item: any, index) => {
-        return (
-          <ListItem
-            key={index}
-            imageUrl={item.picUrl + "?param=100x100"}
-            name={item.name}
-            islazy={false}
-          />
-        );
-      }) || [];
+          );
+        }) || [];
+      singer =
+        state.songList?.artists?.map((item: any, index) => {
+          return (
+            <ListItem
+              key={index}
+              imageUrl={item.picUrl + "?param=100x100"}
+              name={item.name}
+              islazy={false}
+            />
+          );
+        }) || [];
       return [...singer, ...songs];
     }
-  }, [state]);
+  }, [handleClickAll, state.songList]);
   const renderHotWord = useCallback(() => {
     let res = state.hotWords.map((item: any, index: number) => {
       return (

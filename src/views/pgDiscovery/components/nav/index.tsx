@@ -1,9 +1,12 @@
 import React, { useMemo, useCallback, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+
 import "./index.scss";
 export interface IPNavItem {
   code?: string;
   className?: string;
   title?: string;
+  path?:string
 }
 const navListConfig = [
   {
@@ -19,7 +22,7 @@ const navListConfig = [
   {
     title: "排行榜",
     code: `icon-paihang`,
-    path: ""
+    path: "/rank"
   },
   {
     title: "电台",
@@ -29,16 +32,21 @@ const navListConfig = [
   {
     title: "歌手",
     code: `icon-geshou`,
-    path: ""
+    path: "/home/singer"
   }
 ];
 const NavItem: React.FC<IPNavItem> = function({
   code = "icon-paihang",
   className = "nav-item",
-  title="xxx"
+  title = "xxx",
+  path=""
 }) {
+  const history = useHistory();
+
   return (
-    <div className="nav-item-wrapper">
+    <div className="nav-item-wrapper" onClick={() => {
+       history.push(path);
+    }}>
       <div className="nav-icon-wrapper">
         <i className={`iconfont ${code}  ${className}`}></i>
       </div>
@@ -57,7 +65,7 @@ export interface IPNav {
 const Nav: React.FC<IPNav> = function({ navList = navListConfig }) {
   return <div className="nav-wrapper">
     {navList.map((item,index) => {
-      return <NavItem key={item.code+index} code={item.code} title={item.title}/>;
+      return <NavItem key={item.code + index} code={item.code} title={item.title} path={item.path}/>;
     })}
   </div>;
 };
