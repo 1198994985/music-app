@@ -13,10 +13,7 @@ let tabBars: Array<any> = [
     title: "发现",
     paths: "/home/discovery"
   },
-  {
-    title: "云村",
-    paths: "/home/cloud"
-  },
+ 
   {
     title: "歌手",
     paths: "/home/singer"
