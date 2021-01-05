@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "better-scroll": "^1.15.2",
     "dayjs": "^1.8.20",
     "immer": "^5.3.6",
